@@ -26,6 +26,7 @@ import L from 'leaflet';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
 import { format } from 'date-fns';
+import { Agentation } from 'agentation';
 import CryptoJS from 'crypto-js';
 import * as StellarSdk from 'stellar-sdk';
 
@@ -3271,16 +3272,16 @@ const AppContent = () => {
   };
 
   return (
-    <div className={`${darkMode ? 'dark' : ''} h-full optimize-gpu`}>
+    <div className={`${darkMode ? 'dark' : ''}`} style={{ width: '100%', height: '100%', position: 'relative' }}>
       <Routes>
         <Route path="/official/*" element={
-          <div className="h-full optimize-gpu">
+          <div className="h-full">
             <ToastContainer />
             <OfficerPortal />
           </div>
         } />
         <Route path="/*" element={
-          <div className="h-full bg-forest-50 dark:bg-[#050805] text-forest-900 dark:text-white font-outfit transition-colors duration-300 relative flex flex-col overflow-hidden optimize-gpu">
+          <div className="h-full bg-forest-50 dark:bg-[#050805] text-forest-900 dark:text-white font-outfit transition-colors duration-300 relative flex flex-col overflow-hidden">
             <Header />
             <ToastContainer />
             <FloatingSOS />
@@ -3323,7 +3324,7 @@ const AppContent = () => {
                     duration: 0.25, 
                     ease: [0.23, 1, 0.32, 1] // Custom quint ease-out for smoothness
                   }}
-                  className="h-full optimize-gpu framer-fix"
+                  className="h-full framer-fix"
                 >
                   <Routes>
                     <Route path="/" element={renderTab()} />
@@ -3351,12 +3352,19 @@ const VanSanchar = () => {
           --app-width: 390px;
         }
 
-        body {
+        html, body, #root {
+          width: 100%;
+          height: 100%;
           margin: 0;
           padding: 0;
+          overflow: auto;
+        }
+
+        body {
           background: #0a0f0a;
           font-family: 'Outfit', sans-serif;
-          overflow: hidden;
+          -webkit-tap-highlight-color: transparent;
+          overscroll-behavior: none;
         }
 
         .no-scrollbar::-webkit-scrollbar {
@@ -3367,13 +3375,25 @@ const VanSanchar = () => {
           scrollbar-width: none;
         }
 
+        /* Desktop: Show as phone mockup */
+        .app-outer {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+        }
+
         .mobile-wrapper {
           width: 100%;
           max-width: var(--app-width);
           height: calc(100vh - 40px);
+          max-height: 860px;
           margin: 20px auto;
           position: relative;
-          overflow: hidden;
+          overflow-y: auto;
           background: #f6faf6;
           box-shadow: 0 40px 100px -20px rgba(0,0,0,0.6);
           border: 8px solid #1a1a1a;
@@ -3482,6 +3502,7 @@ const VanSanchar = () => {
         <div className="mobile-wrapper relative z-10 shadow-2xl overflow-hidden ring-1 ring-white/10">
           <div className="ashok-watermark"></div>
           <AppContent />
+          <Agentation />
         </div>
       </div>
     </AppProvider>
