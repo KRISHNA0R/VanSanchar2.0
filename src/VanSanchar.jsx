@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, 
-  ResponsiveContainer, BarChart, Bar, Cell, PieChart, Pie,
+  ResponsiveContainer, BarChart as ReBarChart, Bar, Cell, PieChart, Pie,
   LineChart, Line
 } from 'recharts';
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMap, LayersControl } from 'react-leaflet';
@@ -3988,7 +3988,6 @@ const VanSanchar = () => {
         <div className="mobile-wrapper relative z-10 shadow-2xl overflow-hidden ring-1 ring-white/10 w-full max-w-[430px] h-[100dvh] md:h-[880px] md:rounded-[3.5rem] bg-black">
           <div className="ashok-watermark"></div>
           <AppContent />
-          <Agentation />
         </div>
       </div>
     </AppProvider>
