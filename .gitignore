@@ -1,5 +1,8 @@
 node_modules
-# Keep environment variables out of version control
+dist
 .env
-
+.env.*
+.DS_Store
+.agents/
+skills-lock.json
 /src/generated/prisma
