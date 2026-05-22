@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'ryman-eco';
+  src: url('/fonts/ryman-eco.woff2') format('woff2'),
+       url('/fonts/ryman-eco.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+    font-family: 'ryman-eco', 'Outfit', sans-serif;
+  }
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+.dark .glass {
+  @apply bg-black/20 backdrop-blur-md border border-white/10;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.optimize-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.safe-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+.framer-fix {
+  perspective: 1000;
+  transform: translateZ(0);
+}

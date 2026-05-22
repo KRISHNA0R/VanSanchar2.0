@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Officer {
+  id        String   @id @default(cuid())
+  officerId String   @unique
+  name      String
+  role      String
+  reports   Report[]
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  type        String
+  animal      String
+  location    String
+  coordinates String
+  reporter    String
+  status      String   @default("pending") // pending, under_review, resolved
+  severity    String   @default("Medium") // High, Medium, Low
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  officer     Officer? @relation(fields: [officerId], references: [id])
+  officerId   String?
+}
+
+model SosAlert {
+  id          String   @id @default(cuid())
+  location    String
+  coordinates String
+  reporter    String
+  status      String   @default("active") // active, resolved
+  createdAt   DateTime @default(now())
+}
