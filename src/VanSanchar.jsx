@@ -3934,6 +3934,8 @@ const VanSanchar = () => {
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+          padding-top: env(safe-area-inset-top, 0px);
+          height: calc(72px + env(safe-area-inset-top, 0px));
         }
 
         .dark .glass-header {
@@ -3941,6 +3943,8 @@ const VanSanchar = () => {
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding-top: env(safe-area-inset-top, 0px);
+          height: calc(72px + env(safe-area-inset-top, 0px));
         }
 
         .glass-nav {
@@ -3948,6 +3952,8 @@ const VanSanchar = () => {
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-top: 1px solid rgba(255, 255, 255, 0.3);
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+          height: calc(78px + env(safe-area-inset-bottom, 0px));
         }
 
         .dark .glass-nav {
@@ -3955,6 +3961,8 @@ const VanSanchar = () => {
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+          height: calc(78px + env(safe-area-inset-bottom, 0px));
         }
 
         .ashok-watermark {
@@ -3962,22 +3970,22 @@ const VanSanchar = () => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 200px;
-          height: 200px;
+          width: min(50vw, 220px);
+          height: min(50vw, 220px);
           background-image: url('/ashok.png');
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
-          opacity: 0.2;
+          opacity: 0.12;
           pointer-events: none;
           z-index: 0;
-          filter: grayscale(1) opacity(0.5);
+          filter: grayscale(1) brightness(0.8);
         }
       `}</style>
       
       <div className="min-h-screen w-full flex items-center justify-center bg-[#0a0f0a] bg-[url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tr from-forest-950/90 via-black/80 to-forest-900/90 backdrop-blur-[100px]"></div>
-        <div className="mobile-wrapper relative z-10 shadow-2xl overflow-hidden ring-1 ring-white/10">
+        <div className="mobile-wrapper relative z-10 shadow-2xl overflow-hidden ring-1 ring-white/10 w-full max-w-[430px] h-[100dvh] md:h-[880px] md:rounded-[3.5rem] bg-black">
           <div className="ashok-watermark"></div>
           <AppContent />
           <Agentation />
