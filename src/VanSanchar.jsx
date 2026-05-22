@@ -3822,175 +3822,130 @@ const AppContent = () => {
 
 const VanSanchar = () => { 
   return (
-    <AppProvider>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        
-        :root {
-          --app-width: 390px;
-        }
-
-        html, body, #root {
-          width: 100%;
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          overflow: auto;
-        }
-
-        body {
-          background: #0a0f0a;
-          font-family: 'Outfit', sans-serif;
-          -webkit-tap-highlight-color: transparent;
-          overscroll-behavior: none;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-
-        /* Desktop: Show as phone mockup */
-        .app-outer {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .mobile-wrapper {
-          width: 100%;
-          max-width: var(--app-width);
-          height: calc(100vh - 40px);
-          max-height: 860px;
-          margin: 20px auto;
-          position: relative;
-          overflow-y: auto;
-          background: #f6faf6;
-          box-shadow: 0 40px 100px -20px rgba(0,0,0,0.6);
-          border: 8px solid #1a1a1a;
-          border-radius: 50px;
-          outline: 2px solid rgba(255,255,255,0.1);
-          will-change: transform;
-          transform: translateZ(0);
-        }
-
-        .mobile-wrapper::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 120px;
-          height: 30px;
-          background: #1a1a1a;
-          border-bottom-left-radius: 20px;
-          border-bottom-right-radius: 20px;
-          z-index: 100;
-        }
-
-        .mobile-wrapper::after {
-          content: '';
-          position: absolute;
-          bottom: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100px;
-          height: 4px;
-          background: #1a1a1a;
-          border-radius: 2px;
-          z-index: 100;
-        }
-
-        @media (max-width: 450px) {
-          .mobile-wrapper {
-            max-width: 100%;
-            height: 100dvh;
-            margin: 0;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            outline: none;
+    <React.Suspense fallback={<div className="min-h-screen bg-[#051c14] flex items-center justify-center text-white font-black uppercase tracking-widest text-[10px]">Loading VanSanchar...</div>}>
+      <AppProvider>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+          
+          :root {
+            --app-width: 430px;
           }
-          .mobile-wrapper::before, .mobile-wrapper::after {
+
+          html, body, #root {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #0a0f0a;
+          }
+
+          body {
+            background: #0a0f0a;
+            font-family: 'Outfit', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+          }
+
+          .no-scrollbar::-webkit-scrollbar {
             display: none;
           }
-        }
+          .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
 
-        .ryman-eco {
-          font-family: 'ryman-eco', 'Outfit', sans-serif;
-          letter-spacing: -0.02em;
-        }
+          .mobile-wrapper {
+            width: 100%;
+            max-width: var(--app-width);
+            height: 100dvh;
+            position: relative;
+            overflow: hidden;
+            background: #f6faf6;
+            will-change: transform;
+            transform: translateZ(0);
+          }
 
-        /* Glassmorphism utility */
-        .glass-header {
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-          padding-top: env(safe-area-inset-top, 0px);
-          height: calc(72px + env(safe-area-inset-top, 0px));
-        }
+          @media (min-width: 450px) {
+            .mobile-wrapper {
+              height: 880px;
+              margin: 20px auto;
+              border: 8px solid #1a1a1a;
+              border-radius: 50px;
+              box-shadow: 0 40px 100px -20px rgba(0,0,0,0.6);
+            }
+          }
 
-        .dark .glass-header {
-          background: rgba(0, 0, 0, 0.7);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          padding-top: env(safe-area-inset-top, 0px);
-          height: calc(72px + env(safe-area-inset-top, 0px));
-        }
+          .ryman-eco {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+          }
 
-        .glass-nav {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(255, 255, 255, 0.3);
-          padding-bottom: env(safe-area-inset-bottom, 0px);
-          height: calc(78px + env(safe-area-inset-bottom, 0px));
-        }
+          /* Glassmorphism utility */
+          .glass-header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: env(safe-area-inset-top, 0px);
+            height: calc(72px + env(safe-area-inset-top, 0px));
+          }
 
-        .dark .glass-nav {
-          background: rgba(0, 0, 0, 0.8);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          padding-bottom: env(safe-area-inset-bottom, 0px);
-          height: calc(78px + env(safe-area-inset-bottom, 0px));
-        }
+          .dark .glass-header {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: env(safe-area-inset-top, 0px);
+            height: calc(72px + env(safe-area-inset-top, 0px));
+          }
 
-        .ashok-watermark {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: min(50vw, 220px);
-          height: min(50vw, 220px);
-          background-image: url('/ashok.png');
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          opacity: 0.12;
-          pointer-events: none;
-          z-index: 0;
-          filter: grayscale(1) brightness(0.8);
-        }
-      `}</style>
-      
-      <div className="min-h-screen w-full flex items-center justify-center bg-[#0a0f0a] bg-[url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-forest-950/90 via-black/80 to-forest-900/90 backdrop-blur-[100px]"></div>
-        <div className="mobile-wrapper relative z-10 shadow-2xl overflow-hidden ring-1 ring-white/10 w-full max-w-[430px] h-[100dvh] md:h-[880px] md:rounded-[3.5rem] bg-black">
-          <div className="ashok-watermark"></div>
-          <AppContent />
+          .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            height: calc(78px + env(safe-area-inset-bottom, 0px));
+          }
+
+          .dark .glass-nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            height: calc(78px + env(safe-area-inset-bottom, 0px));
+          }
+
+          .ashok-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(50vw, 220px);
+            height: min(50vw, 220px);
+            background-image: url('/ashok.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+            filter: grayscale(1) brightness(0.8);
+          }
+        `}</style>
+        
+        <div className="min-h-screen w-full flex items-center justify-center bg-[#0a0f0a] overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-tr from-forest-950/90 via-black/80 to-forest-900/90 backdrop-blur-[100px] z-0"></div>
+          <div className="mobile-wrapper relative z-10 shadow-2xl overflow-hidden ring-1 ring-white/10 bg-white dark:bg-black">
+            <div className="ashok-watermark"></div>
+            <AppContent />
+          </div>
         </div>
-      </div>
-    </AppProvider>
+      </AppProvider>
+    </React.Suspense>
   ); 
 };
 
